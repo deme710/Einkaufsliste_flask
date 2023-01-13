@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meine Einkaufsliste</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <h1 class="text-center">Meine Einkaufsliste</h1>
+        <h2 class="text-center">Für Pauline und Demetrio</h2>
+        <p class="text-center">Damit mein Schatz endlich eine Einkaufliste hat</p>
+        <form method="post" action="/delete">
+            <ul class="list-group">
+                {% for item in items %}
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="{{ item }}">
+                            <label class="form-check-label">{{ item }}</label>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="form-group">
+                <input type="text" class="form-control" name="new_item" placeholder="Gib ein neues Produkt ein">
+            </div>
+            <div class="text-center">
+                <input type="submit" class="btn btn-primary" value="Eintragen" formaction="/add">
+                <input type="submit" class="btn btn-danger" value="Löschen/Eingekauft">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endwith %}
