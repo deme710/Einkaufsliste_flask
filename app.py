@@ -28,7 +28,8 @@ def add_item():
 def delete_item():
     items = connection_sql.get_items()
     for item in items:
-        if request.form.get(item):
+        item_replaced = item.replace('\n', '\r\n')
+        if request.form.get(item_replaced):
             items.remove(item)
     connection_sql.write_items(items)
     flash("Item(s) deleted successfully", "success")

@@ -7,10 +7,10 @@ def get_items():
     to-do items.
     """
     # database connection
-    connection = pymysql.connect(host="sql.freedb.tech",
-                                 user="freedb_heroku-app",
+    connection = pymysql.connect(host="deme710.mysql.pythonanywhere-services.com",
+                                 user="deme710",
                                  passwd="!3%5tex9Y9pf25Y",
-                                 database="freedb_Einkaufsliste",
+                                 database="deme710$freedb_Einkaufsliste",
                                  cursorclass=pymysql.cursors.DictCursor)
 
     old_items = []
@@ -28,10 +28,10 @@ def get_items():
 def write_items(items_arg):
     """" Write the to-do items list into the sql database."""
     # database connection
-    connection = pymysql.connect(host="sql.freedb.tech",
-                                 user="freedb_heroku-app",
+    connection = pymysql.connect(host="deme710.mysql.pythonanywhere-services.com",
+                                 user="deme710",
                                  passwd="!3%5tex9Y9pf25Y",
-                                 database="freedb_Einkaufsliste",
+                                 database="deme710$freedb_Einkaufsliste",
                                  cursorclass=pymysql.cursors.DictCursor)
 
     items_sql = []
@@ -49,10 +49,10 @@ def write_items(items_arg):
 if __name__ == "__main__":
     print("Hello")
     # database connection
-    connection = pymysql.connect(host="sql.freedb.tech",
-                                 user="freedb_heroku-app",
+    connection = pymysql.connect(host="deme710.mysql.pythonanywhere-services.com",
+                                 user="deme710",
                                  passwd="!3%5tex9Y9pf25Y",
-                                 database="freedb_Einkaufsliste",
+                                 database="deme710$freedb_Einkaufsliste",
                                  cursorclass=pymysql.cursors.DictCursor)
     with connection:
         with connection.cursor() as cursor:
